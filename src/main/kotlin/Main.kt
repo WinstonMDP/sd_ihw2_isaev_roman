@@ -50,7 +50,10 @@ suspend fun main() = coroutineScope {
                     }
 
                     "reg" -> users.add(User(input[2], input[3]))
-                    else -> throw Exception("There is no such command. 'in' and 'reg' are available after 'auth'.")
+                    else -> throw Exception(
+                        "There is no such command. " +
+                                "'in' and 'reg' are available after 'auth'."
+                    )
                 }
 
                 "menu" -> when (input[1]) {
@@ -70,13 +73,19 @@ suspend fun main() = coroutineScope {
                             "price" -> menu.first { it.l.name == input[3] }.l.price = input[4].toInt()
                             "time" -> menu.first { it.l.name == input[3] }.l.time = input[4].toInt().seconds
                             "count" -> menu.first { it.l.name == input[3] }.r += input[4].toInt()
-                            else -> throw Exception("There is no such command. 'price', 'time', 'count' are available after 'edit'.")
+                            else -> throw Exception(
+                                "There is no such command. " +
+                                        "'price', 'time', 'count' are available after 'edit'."
+                            )
                         }
                     }
 
                     "list" -> menu.forEach { println("${it.l}, have ${it.r} ") }
 
-                    else -> throw Exception("There is no such command. 'add', 'remove', 'edit' are available after 'menu'.")
+                    else -> throw Exception(
+                        "There is no such command. " +
+                                "'add', 'remove', 'edit' are available after 'menu'."
+                    )
                 }
 
                 "order" -> {
@@ -135,7 +144,10 @@ suspend fun main() = coroutineScope {
                             println("Total sum to pay: $sumToPay")
                         }
 
-                        else -> throw Exception("There is no such command. 'add', 'remove', 'list', 'pay' are available after 'order'.")
+                        else -> throw Exception(
+                            "There is no such command. " +
+                                    "'add', 'remove', 'list', 'pay' are available after 'order'."
+                        )
                     }
                 }
 
